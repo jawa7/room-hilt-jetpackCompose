@@ -9,7 +9,7 @@ class ExampleRepository (
     private val exampleDao: ExampleDao
     )  {
 
-    val allNames: Flow<List<Example>> = exampleDao.getUsername()
+    suspend fun allNames() = exampleDao.getUsername()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread

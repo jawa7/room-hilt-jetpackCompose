@@ -2,24 +2,36 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "80c9579e850009abab93f8ccf11bf887",
+    "identityHash": "d6aa9f40f20f799ec330769739ae3da8",
     "entities": [
       {
         "tableName": "test_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, PRIMARY KEY(`name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ids` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `scoreOfKz` REAL)",
         "fields": [
+          {
+            "fieldPath": "ids",
+            "columnName": "ids",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
+          },
+          {
+            "fieldPath": "scoreOfKz",
+            "columnName": "scoreOfKz",
+            "affinity": "REAL",
+            "notNull": false
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "name"
+            "ids"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -28,7 +40,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '80c9579e850009abab93f8ccf11bf887')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd6aa9f40f20f799ec330769739ae3da8')"
     ]
   }
 }

@@ -5,6 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "test_table")
-data class Example(
-    @PrimaryKey @ColumnInfo(name = "name") val name: String
+data class Example (
+    @PrimaryKey(autoGenerate = true)
+    var ids: Long = 0L,
+    val name: String?,
+    val score: Double?,
 )
